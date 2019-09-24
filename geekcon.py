@@ -4,9 +4,6 @@ import pygame.midi as midi
 import traceback
 import json
 
-PLAY_ANGLE = 115
-MUTE_ANGLE = 125
-
 def pins_by_note(note):
 	with open('servo_config.json', 'r') as f:
 		pins_config = json.load(f)
@@ -17,6 +14,15 @@ def pins_by_note(note):
 		else:
 			return None, None, None
 
+def all_mute_angles():
+	res = dict()
+	with open('servo_config.json', 'r') as f:
+		pins_config = json.load(f)
+		for cfg in pins_config.values():
+			res[cfg[0]] = cfg[1]
+
+	return res
+
 ### ARDUINO
 
 board = Arduino('COM7')
@@ -26,9 +32,10 @@ def move_servo(pin, angle):
 	print 'Writing {0} to pin {1}'.format(angle, pin)
 	pins[pin - 2].write(angle)
 
-for pin in range(2, 10):
-	board.servo_config(pin, MUTE_ANGLE)
-	move_servo(pin, MUTE_ANGLE)
+mute_angles = all_mute_angles()
+for pin in mute_angles:
+	board.servo_config(pin, mute_angles[pin])
+	move_servo(pin, mute_angles[pin])
 
 ### MIDI
 
