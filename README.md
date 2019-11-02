@@ -1,6 +1,8 @@
 # BottleOrgan
 The code for the bottle organ project in GeekCon 2019
 
+https://youtu.be/hZUGD56VnGA
+
 ## Setup
 The PC running this code should be connected to:
 1. A MIDI Device
