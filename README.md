@@ -1,5 +1,7 @@
 # BottleOrgan
-The code for the bottle organ project in GeekCon 2019
+The code for the bottle organ project in GeekCon 2019, by Michal Shaham and Or Begam. 
+
+Demonstration:
 
 https://youtu.be/hZUGD56VnGA
 
